@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+
 <title>مطعم RBg</title>
 <style>
 :root{
@@ -112,20 +117,30 @@ font-weight:bold
 }
 /* MODAL */
 .modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.7);
-display:none;
-align-items:center;
-justify-content:center
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:10px;              /* مسافة بسيطة من أطراف الشاشة */
 }
-.modal.active{display:flex}
+
+.modal.active{
+  display:flex;
+}
+
 .box{
-background:#020617;
-padding:20px;
-border-radius:16px;
-width:90%;
-max-width:400px
+  background:#020617;
+  padding:20px;
+  border-radius:16px;
+  width:90%;
+  max-width:400px;
+
+  /* 👇 أهم تعديل */
+  height:90vh;               /* ارتفاع ثابت على قد الشاشة */
+  max-height:90vh;           /* يمنع التمدد */
+  overflow-y:auto;           /* سكرول داخلي لو المحتوى كتير */
 }
 .switch{display:flex;gap:10px;margin-bottom:10px}
 .switch div{
@@ -276,6 +291,227 @@ color:#000;
 
 
 
+.chicken-divider{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:20px 0;
+}
+
+
+
+
+.chicken-divider{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin:14px 0;
+}
+
+
+
+
+
+.chicken-divider span{
+  width:100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  padding:10px 0;          /* أصغر */
+  border-radius:12px;
+  font-size:20px;          /* أصغر شوية */
+  font-weight:800;
+  color:#000;
+  text-align:center;
+  box-shadow:0 4px 8px rgba(0,0,0,0.35);
+}
+
+
+
+
+
+
+/* شريط اللمبات */
+.light-strip {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0;
+  background:#111827; /* نفس لون الخلفية */
+}
+
+.light-strip span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff8a3d;
+  animation: blink 1.5s infinite alternate;
+}
+
+
+
+
+
+
+
+
+.hero-slider{
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 10px auto 20px;
+}
+
+.hero-slider img{
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transition: opacity .4s ease;
+}
+
+/* شكل السلايدر */
+.hero-slider{
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 10px auto 20px;
+  text-align: center;
+}
+
+/* الصورة */
+.hero-slider img{
+  width: 100%;
+  height: auto;          /* مهم جداً عشان الصورة تبان كاملة */
+  object-fit: contain;   /* يخلي الصورة كلها ظاهرة */
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  background: #111;      /* لو فيه فراغ يبان شيك */
+  transition: opacity .4s ease;
+}
+
+
+
+
+
+/* النقط */
+.slider-dots{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.slider-dots .dot{
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.slider-dots .dot.active{
+  background: #ffb26b;   /* لون أوضح بدل var(--accent) */
+  transform: scale(1.3);
+}
+
+
+
+
+
+
+/* شاشة التحميل */
+#loadingScreen{
+  position:fixed;
+  inset:0;
+  background:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999999;
+}
+
+/* محتوى التحميل */
+.loading-box{
+  text-align:center;
+}
+
+/* اللوجو */
+.loading-box img{
+  width:90px;
+  height:90px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  margin-bottom:15px;
+}
+
+/* النص */
+.loading-box p{
+  font-size:18px;
+  font-weight:bold;
+  color:#9b1c1c;
+  margin-bottom:15px;
+}
+
+/* الدائرة */
+.loader{
+  width:40px;
+  height:40px;
+  border:4px solid #eee;
+  border-top:4px solid #9b1c1c;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
+
+
+
+.ramadan-title{
+  display:block;              /* 👈 مهم: يخليها في سطر لوحدها */
+  background: linear-gradient(90deg, #ff8a3d, #ffb26b);
+  color:#000;
+  padding:8px 12px;
+  border-radius:12px;
+  font-weight:900;
+  margin-bottom:6px;
+  font-size:18px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.4);
+  text-align:center;
+}
+
+
+
+
+.tabs-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px;
+  flex: 1; /* يخلي التابس ياخد كل المساحة الممكنة */
+}
+
+.scroll-arrow {
+  background: #111;
+  color: #ff8a3d;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+
 
 
 
@@ -287,25 +523,131 @@ color:#000;
 </style>
 </head>
 <body>
+  
+  
+  
+  
+  
+  <!-- شاشة التحميل -->
+<div id="loadingScreen">
+  <div class="loading-box">
+    <img src="https://i.postimg.cc/sDcgNK6M/1770259659861.png" id="loadingLogo" alt="Logo">
+    <p>جاري التحميل...</p>
+    <div class="loader"></div>
+  </div>
+</div>
+  
+  
+  
+
+  
+  
+<!-- زينة رمضان -->
+<div id="ramadanDecoration"></div>
+
+<style>
+#ramadanDecoration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999998;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  pointer-events: none;
+}
+
+#ramadanDecoration span {
+  font-size: 24px;
+  opacity: 0.3;
+  animation: blink 0.5s infinite alternate;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; transform: scale(0.8);}
+  50% { opacity: 1; transform: scale(1);}
+  100% { opacity: 0.2; transform: scale(0.8);}
+}
+</style>
+
+<script>
+const shapes = ['🌙','⭐','🏮','✨','🕌','🌟'];
+const container = document.getElementById('ramadanDecoration');
+
+// إنشاء 30 عنصر من الزينة
+for(let i=0;i<30;i++){
+  const span = document.createElement('span');
+  span.textContent = shapes[Math.floor(Math.random()*shapes.length)];
+  span.style.animationDuration = (Math.random()*0.5 + 0.3) + 's';
+  container.appendChild(span);
+}
+</script>
+  
+  
+  
+  
+  
 <!-- مودال الترحيب -->
 <div id="welcomeModal">
   <div id="welcomeBox">
     <h2>أهلاً بك في مطعم RBg 🍔</h2>
-    <p>اختر ما تريد من قائمة السندوتشات، البطاطس، الصوصات أو العروض!</p>
-    <button onclick="closeWelcome()">الغاء</button>
+ 
+    <p>
+👌  كل سنه وانتم طيبين وبخير🌜 احلى عروض بدعمكم لينا عملنا لكم عروض ارخص اسعار في مصر🇪🇬
+
+</p>
+
+
+
+    <button onclick="closeWelcome()">موافق🤝</button>
   </div>
 </div>
 
 <header>
   <div class="logo">
-    <img src="https://i.postimg.cc/sDcgNK6M/1770259659861.png">
+    <img src="">
   </div>
+  
+  
+  
+  
+  
+  
+  <!-- Slider -->
+<!-- Slider -->
+<div class="hero-slider">
+  <img id="heroImage" alt="RBG">
+</div>
+
+  <div class="slider-dots">
+    <span class="dot active" onclick="changeSlide(0)"></span>
+    <span class="dot" onclick="changeSlide(1)"></span>
+    <span class="dot" onclick="changeSlide(2)"></span>
+  </div>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <div id="falling-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:9999"></div>
   <div class="social">
     <a href="https://wa.me/01284922288" target="_blank">
       <img src="" class="social-icon anim-up">
     </a>
-    <a href="https://www.facebook.com/" target="_blank">
+    <a href="https://www.facebook.com/share/1D1W5F5YFa/" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" class="social-icon anim-down">
     </a>
     <a href="https://www.tiktok.com/" target="_blank">
@@ -317,7 +659,7 @@ color:#000;
   
   <!-- صندوق تحميل التطبيق -->
 <div style="text-align:center; margin:15px auto; background:#ff4d4d; padding:8px 12px; border-radius:12px; width:140px; box-shadow:0 4px 6px rgba(0,0,0,0.3);">
-  <a href="رابط_تحميل_التطبيق" target="_blank" style="text-decoration:none; color:#fff;">
+  <a href="https://www.mediafire.com/file/j0j9omtcfvcubtt/RBG.apk/file" target="_blank" style="text-decoration:none; color:#fff;">
     <img src="https://i.postimg.cc/sDcgNK6M/1770259659861.png" alt="App Icon" style="width:40px; height:40px; display:block; margin:0 auto 5px;">
     <span style="font-weight:bold; font-size:14px;">تحميل التطبيق</span>
   </a>
@@ -325,13 +667,20 @@ color:#000;
   
   
   
-  
-  
-  <div class="tabs">
+<div class="tabs-wrapper">
+  <button class="scroll-arrow left" onclick="scrollTabs(-150)">❮</button>
+
+  <div class="tabs" id="tabsContainer">
     <div class="tab active" onclick="setCat('سندوتشات',this)">سندوتشات</div>
     <div class="tab" onclick="setCat('بطاطس',this)">بطاطس</div>
     <div class="tab" onclick="setCat('صوصات',this)">صوصات</div>
-    <div class="tab" onclick="setCat('عروض',this)">العروض</div>
+    <div class="tab" onclick="setCat('عروض',this)">عروض</div>
+    <div class="tab" onclick="setCat('عروض رمضان',this)">عروض رمضان</div>
+    <div class="tab" onclick="setCat('مشروبات',this)">مشروبات 🥤</div>
+  </div>
+
+  <button class="scroll-arrow right" onclick="scrollTabs(150)">❯</button>
+</div>
   </div>
 </header>
 
@@ -343,6 +692,39 @@ color:#000;
     <button onclick="openModal()">تأكيد الطلب</button>
   </div>
 </footer>
+
+
+
+
+
+<!-- عناوين الفروع في أسفل الصفحة -->
+<div style="padding:15px; text-align:right; font-size:14px; color:#fff; line-height:1.6; background:#111827; margin-top:10px; border-top:1px solid #333;">
+  <p><strong>فرع ميامي:</strongp>
+  
+  
+  العيسوي بجوار كافيه الشيخ مسكين وبازار كوليكشن مصر.📍.....
+  
+  
+  
+  
+  
+  
+  <p><strong>فرع السيوف:</strong> 
+  
+  السيوف شماعه خلف مكتب بريد السيوف بجوار قهوه هيما .📍.....
+  
+  
+  
+  
+  
+</div>
+
+
+
+
+
+
+
 
 <!-- MODAL -->
 <div class="modal" id="modal">
@@ -396,7 +778,6 @@ function showRamadan() {
       <label>اختر منطقة التوصيل</label>
       <select id="deliveryZone">
         <option value="">اختر المنطقة</option>
-        <option value="0">استلم من المطعم</option>
         <option value="20">اسكندر ابراهيم – 20 جنيه</option>
         <option value="25">خليل حمادة – 25 جنيه</option>
         <option value="30">مندره بحري – 30 جنيه</option>
@@ -404,8 +785,8 @@ function showRamadan() {
         <option value="25">45 بحري – 25 جنيه</option>
         <option value="35">45 قبلي – 35 جنيه</option>
         <option value="30">سيدي بشر بحري – 30 جنيه</option>
-        <option value="30">محمد نجيب – 30 جنيه</option>
-        <option value="35">سيدي بشر قبلي – 35 جنيه</option>
+        <option value="30">محمد نجيب30 –  جنيه</option>
+        <option value="35">سيدى بشر قبلي – 35 جنيه</option>
         <option value="35">سيدي بشر ترام – 35 جنيه</option>
         <option value="40">ستان ستيفانو – 40 جنيه</option>
         <option value="45">جانكليس – 45 جنيه</option>
@@ -529,17 +910,17 @@ let selectedBranch = 'ميامي';
 const items = [// ====== السندوتشات ======
 {id:1,cat:'سندوتشات',name:'Classic RBg',s:60,d:85,
 img:'https://i.postimg.cc/gJdJMhQK/1770759126372.png',
-opts:[ 'خص','طماطم','رانش','جبنه سايحه']
+opts:[ 'خس','طماطم','تكساس','جبنه سايحه','بصل',]
 },
 
 {id:2,cat:'سندوتشات',name:'Big RBg',s:75,d:100,
 img:'https://i.postimg.cc/mrwxb698/1770251211583.png',
-opts:['خس','طماطم','بصل','جبنه سايحه','تكساس','موتزاريلا ستيك',]
+opts:['خس','طماطم','بصل','جبنه سايحه','تكساس',]
 },
 
 {id:3,cat:'سندوتشات',name:'F16 RBg',s:85,d:110,
 img:'https://i.postimg.cc/3NqY3D26/1770251237946.png',
-opts:[ 'خص','طماطم','بصل','جبنه سايحه','تكساس',]
+opts:['طماطم','بصل','جبنه سايحه','تكساس','خس',]
 },
 
 {id:4,cat:'سندوتشات',name:'F16 Big RBg',s:110,d:125,
@@ -549,7 +930,7 @@ opts:[ 'خس','طماطم','بصل','جبنه سايحه','تكساس',]
 
 {id:5,cat:'سندوتشات',name:'F16 Smokey',s:110,d:125,
 img:'https://i.postimg.cc/tRkz2Nzx/1770251097064.png',
-opts:['برجر اللحم المشوي محشو جبنة','سلامي مدخن','طماطم','بصل','جبنة سايحة','تكساس']
+opts:['خس','طماطم','بصل','جبنه سايحه','تكساس',]
 },
 
 {id:6,cat:'سندوتشات',name:'Smash RBg',s:80,d:110,
@@ -559,22 +940,22 @@ opts:['خس','بصل مكرميل','جبنه سايحه','تكساس','بارب�
 
 {id:7,cat:'سندوتشات',name:'Classic Beef RBg (On Fire)',s:100,d:140,
 img:'https://i.postimg.cc/1552Rtt8/1770414590918.png',
-opts:[ 'خس','طماطم','بصل','جبنه سايحه','صوص شيدر','بيج تستي',]
+opts:[ 'خس','طماطم','بصل','جبنه سايحه','تكساس',]
 },
 
 {id:8,cat:'سندوتشات',name:'Beef RBg Spicy (On Fire)',s:100,d:150,
 img:'https://i.postimg.cc/QMp0JGtc/1770251149994.png',
-opts:['خس','طماطم','بصل','صوص شيدر','بيج تستي','هالبينو سويت شيلي',]
+opts:['خس','طماطم','بصل','جبنه سايحه ','تكساس',' سويت شيلي',]
 },
 
 {id:9,cat:'سندوتشات',name:'Beef RBg Mushroom',s:110,d:150,
 img:'https://i.postimg.cc/5tMm0737/1770251177180.png',
-opts:['خس','طماطم','بصل','كريمي صوص شيدر','بيج تستي',]
+opts:['خس','طماطم','بصل','جبنه سايحه  ','تكساس ',]
 },
 
 {id:10,cat:'سندوتشات',name:'Beef RBg مدخن',s:110,d:150,
 img:'https://i.postimg.cc/5tMm0737/1770251177180.png',
-opts:['خس','مطاطم','بصل','صوص شيدر','باربيكيو','بيج تستي',]
+opts:['خس','طماطم','بصل','جبنه سايحه','تكساس','باربيكيو',]
 },
 
 {id:11,cat:'سندوتشات',name:'Classic Chicken',s:60,d:85,
@@ -584,7 +965,7 @@ opts:['خس','طماطم','رانش','جبنه سايحه',]
 
 {id:12,cat:'سندوتشات',name:'Big Chicken',s:75,d:100,
 img:'https://i.postimg.cc/pTyTfxVK/1770249404346.png',
-opts:[ 'خس','طماطم','رانش','جبنه سايحه','موتزاريلا ستيك',]
+opts:[ 'خس','طماطم','رانش','جبنه سايحه',]
 },
 
 {id:13,cat:'سندوتشات',name:'F16 Chicken',s:85,d:105,
@@ -604,7 +985,7 @@ opts:['خس','طماطم','جبنه سايحه','هالبينو','رانش',]
 
 {id:16,cat:'سندوتشات',name:'Smokey Baazooka',s:105,d:125,
 img:'https://i.postimg.cc/Z5RqNpbT/1770249354748.png',
-opts:['خس','طماطم','جبنه سايحه','هالبينو','رانش','رومي مدخن',]
+opts:['خس','طماطم','جبنه سايحه','هالبينو','رانش',]
 },
 
 {id:17,cat:'سندوتشات',name:'RBg Chicken on Fire Ranchy',s:85,d:120,
@@ -635,8 +1016,45 @@ opts:['خس','طماطم','صوص الرانش','الكريمي','صوص الش�
  {id:32,cat:'عروض',name:`الصدمه ٢ 😍\n٢ سنجل دراجون`, s:110,img:'https://i.postimg.cc/2jTrnVgC/1770494500235.png'},
  {id:33,cat:'عروض',name:`الصدمه ٣ 😜\n١ سنجل لحمه F16\n١ سنجل بازوكا`, s:140,img:'https://i.postimg.cc/43hp9Cdy/1770497886419.png'},
  {id:34,cat:'عروض',name:`الصدمه ٤ 🤪\n١ بيف مشروم سنجل\n١ بيف موتزاريلا ستيك سنجل`, s:120,img:'https://i.postimg.cc/PxW31vxx/1770498918156.png'},
- {id:35,cat:'عروض',name:`الصدمه ٥ 🫣\n١ سنجل تشيكن رانش مشوي\n١ سماش سنجل مشروم`, s:150,img:'https://i.postimg.cc/8kFB86Dv/1770499454749.png'}
+ {id:35,cat:'عروض',name:`الصدمه ٥ 🫣\n١ سنجل تشيكن رانش مشوي\n١ سماش سنجل مشروم`, s:150,img:'https://i.postimg.cc/8kFB86Dv/1770499454749.png'},
+
+
+
+// ===== عروض رمضان =====
+{id:36, cat:'عروض رمضان', name:`🌙✨ رمضان كريم ١ ✨🌙\n\n5 كفته + ارز + مخلل + صوص رانش + عيش + بطاطس`, s:85, img:'https://i.postimg.cc/d1TpsbTS/1771367614911.png'},
+
+{id:37, cat:'عروض رمضان', name:`🌙✨ رمضان كريم ٢ ✨🌙\n\nربع فرخه ورك + ارز + مخلل + صوص رانش + عيش + بطاطس`, s:85, img:'https://i.postimg.cc/50MqzTRZ/1771367821743.png'},
+
+{id:38, cat:'عروض رمضان', name:`🌙✨ رمضان كريم ٣ ✨🌙\n\n4 قطع استريبس + ارز + مخلل + صوص رانش + عيش + بطاطس`, s:85, img:'https://i.postimg.cc/SNYd2WBh/1771367939709.png'},
+
+{id:39, cat:'عروض رمضان', name:`🌙✨ رمضان كريم ٤ ✨🌙\n\nربع فرخه ورك + 2 كفته + مخلل + صوص بيج تيستي + عيش + بطاطس`, s:110, img:'https://i.postimg.cc/m2ShDpTV/1771368084238.png'},
+
+{id:40, cat:'عروض رمضان', name:`🌙✨ رمضان كريم ٥ ✨🌙\n\n3 كفته + 3 شيش طاووق + 2 فليه مشوي + ارز + مخلل + صوص رانش + عيش + بطاطس`, s:150, img:'https://i.postimg.cc/02HRc7nq/1771368362754.png'},
+
+{id:41, cat:'عروض رمضان', name:`🌙✨ رمضان كريم ٦ ✨🌙\n\n2 كفته + 2 شيش طاووق + استريبس + 1 فليه مشوي + ارز + مخلل + صوص بيج تيستي + عيش + بطاطس`, s:150, img:'https://i.postimg.cc/bJspzLmq/1771368419136.png'},
+
+{id:42, cat:'عروض رمضان', name:`🌙✨ وجبة عائلية ✨🌙\n\nفرخه كامله مع رز ومخلل وعيش`, s:280, img:'https://i.postimg.cc/t42KYWZ4/1771368511132.png'},
+
+{id:43, cat:'عروض رمضان', name:`🌙✨ كيلو كفته ✨🌙\n\nمع ارز ومخلل وعيش`, s:300, img:'https://i.postimg.cc/gkpQsN8B/1771368606365.png'},
+
+// ===== المشروبات =====
+{id:50, cat:'مشروبات', name:'صوبيا (زجاجة 300 مل)', s:20, img:'https://i.postimg.cc/3wGz96Sq/1771601215225.png'},
+{id:51, cat:'مشروبات', name:'خروب (زجاجة 300 مل)', s:15, img:'https://i.postimg.cc/nhjWcgJY/1771601307091.png'},
+{id:52, cat:'مشروبات', name:'تمر (زجاجة 300 مل)', s:15, img:'https://i.postimg.cc/sxHn39Hm/1771601456922.png'},
+{id:53, cat:'مشروبات', name:'عناب (زجاجة 300 مل)', s:15, img:'https://i.postimg.cc/KY7J1ysB/1771601339807.png'},
+{id:54, cat:'مشروبات', name:'صوبيا مانجا (زجاجة 300 مل)', s:23, img:'https://i.postimg.cc/T2NQL0Q9/1771601375237.png'},
+{id:55, cat:'مشروبات', name:'برتقال (زجاجة 300 مل)', s:20, img:'https://i.postimg.cc/V6LB50Cg/1771601506134.png'},
+
+{id:56, cat:'مشروبات', name:'بيبسي', s:20, img:'https://i.postimg.cc/pLcnkchk/1771601936058.png'},
+{id:57, cat:'مشروبات', name:'سبرايت', s:20, img:'https://i.postimg.cc/3xqd2yV1/1771601970297.png'},
+{id:58, cat:'مشروبات', name:'فيروز', s:20, img:'https://i.postimg.cc/Cx9xz3fY/1771602018966.png'},
+{id:59, cat:'مشروبات', name:'مياه معدنية', s:10, img:'https://i.postimg.cc/7hXLhbSR/1771602051195.png'},
+
 ];
+
+
+
+
 
 
 
@@ -682,6 +1100,16 @@ function toggleOpt(productId, opt){
   else arr.push(opt);
   // ما فيش حاجة تانية نفعلها فوراً؛ الإضافات هتتضاف للنسخة عند الضغط على +
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -790,7 +1218,25 @@ function render(){
 
   // نعرض فقط الأصناف من items حسب القسم
   let delay = 0;
-  items.filter(i=>i.cat===cat).forEach(p=>{
+  
+  
+  
+  
+  let chickenAdded = false;   // حطه قبل الـ forEach مباشرة
+
+items.filter(i=>i.cat===cat).forEach(p=>{
+
+  if(p.name === 'Classic Chicken' && !chickenAdded){
+    list.innerHTML += `
+      <div class="chicken-divider">
+        <span>🍗 Chicken</span>
+      </div>
+    `;
+    chickenAdded = true;   // علشان ما تتكررشي
+  }
+    
+    
+  
     // عدد النسخ في الكارت من نفس الصنف
     const count = cart.filter(x=>x.id===p.id).length;
 
@@ -840,14 +1286,23 @@ function updateMsgPreview(){
   let msg = 'طلب جديد:\n\n';
 
   // نعرض كل نسخة في الكارت
-  cart.forEach(i=>{
-    const p = items.find(x=>x.id===i.id);
+
+cart.forEach(i=>{
+  const p = items.find(x=>x.id===i.id);
+
+  // سنجل / دبل للسندوتشات فقط
+  if(p.cat === 'سندوتشات'){
     msg += `• ${p.name} (${i.type=='s'?'سنجل':'دبل'}) × ${i.qty}\n`;
-    if(i.opts && i.opts.length){
-      msg += `  إضافات: ${i.opts.join(' - ')}\n`;
-    }
-    msg += `\n`;
-  });
+  }else{
+    msg += `• ${p.name} × ${i.qty}\n`;
+  }
+
+  if(i.opts && i.opts.length){
+    msg += `  إضافات: ${i.opts.join(' - ')}\n`;
+  }
+
+  msg += `\n`;
+});
 
   msg += `الإجمالي: ${total.innerText} جنيه\n`;
   msg += `الاسم: ${nameInput.value.trim() || 'غير محدد'}\n`;
@@ -924,9 +1379,6 @@ function closeCustomAlert(){
 
 </script>     
 
-
-
-
 <!-- بوكس الرسائل -->
 <div id="customAlert" style="
 position:fixed;
@@ -955,10 +1407,94 @@ z-index:99999;">
       color:#fff;
       font-weight:bold;">
       حسناً
+      
     </button>
 
   </div>
 </div>
 
 </script>
-</html>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+const images = [
+  "https://i.postimg.cc/sDcgNK6M/1770259659861.png",
+  "https://i.postimg.cc/50MqzTRZ/1771367821743.png",
+  "https://i.postimg.cc/d1TpsbTS/1771367614911.png"
+];
+
+let currentIndex = 0;
+const heroImage = document.getElementById("heroImage");
+const dots = document.querySelectorAll(".dot");
+
+/* أول صورة تظهر فور تحميل الصفحة */
+heroImage.removeAttribute("src"); 
+heroImage.src = images[0];
+heroImage.style.opacity = 1;
+
+function changeSlide(index){
+  currentIndex = index;
+  heroImage.style.opacity = 0;
+
+  setTimeout(()=>{
+    heroImage.src = images[currentIndex];
+    heroImage.style.opacity = 1;
+  },200);
+
+  if(dots.length){
+    dots.forEach(d => d.classList.remove("active"));
+    dots[currentIndex].classList.add("active");
+  }
+}
+
+/* تغيير تلقائي */
+setInterval(()=>{
+  currentIndex = (currentIndex + 1) % images.length;
+  changeSlide(currentIndex);
+}, 3500);
+
+});
+</script>
+
+
+<script>
+window.addEventListener("load", ()=>{
+  setTimeout(()=>{
+    document.getElementById("loadingScreen").style.display="none";
+  }, 2000); // مدة الظهور عند فتح التطبيق
+});
+
+
+
+
+
+
+
+  // دالة تحريك التابس
+  function scrollTabs(amount){
+    document.getElementById("tabsContainer").scrollBy({
+      left: amount,
+      behavior: 'smooth'
+    });
+  }
+
+  // مثال: إذا حبيت تضيف حركة تلقائية أو عند فتح الصفحة
+  // scrollTabs(50); // تحريك 50 بكسل لليمين
+</script>
+
+
+
+
+
+
+
+</script>
+
+
+
+<body/>
+
+
+    </html>
